@@ -5,7 +5,7 @@ template <class Type, class Type2>
 void QLNV<Type, Type2>::themNV()
 {
 	int type;
-	cout << "nhan vien hop dong(1) hay nhan vien bien che(0): ";
+	cout << "Nhan vien hop dong (1) hay nhan vien bien che (0): ";
 	cin >> type;
 
 	
@@ -21,9 +21,9 @@ void QLNV<Type, Type2>::themNV()
 		cin >> maNV;
 		cout << "Nhap ten NV: ";
 		cin >> tenNV;
-		cout << "Nhap ngay bat dau: ";
+		cout << "Nhap ngay bat dau: \n";
 		cin >> ngayBatDau;
-		cout << "Nhap gioi tinh: ";
+		cout << "Nhap gioi tinh (Nam: 1 | Nu: 0): ";
 		cin >> gioiTinh;
 		cout << "Nhap luong theo ngay: ";
 		cin >> luongTheoNgay;
@@ -60,9 +60,9 @@ void QLNV<Type, Type2>::themNV()
 		cin >> maNV;
 		cout << "Nhap ten NV: ";
 		cin >> tenNV;
-		cout << "Nhap ngay bat dau: ";
+		cout << "Nhap ngay bat dau: \n";
 		cin >> ngayBatDau;
-		cout << "Nhap gioi tinh: ";
+		cout << "Nhap gioi tinh (Nam: 1 | Nu: 0): ";
 		cin >> gioiTinh;
 		cout << "Nhap he so luong: ";
 		cin >> heSoLuong;
@@ -98,10 +98,38 @@ void QLNV<Type, Type2>::xoaNV()
 	cout << "Nhap ma nhan vien can xoa: ";
 	cin >> maNV;
 
-	Node* node = this->dsNV;
-	//while (node != this->tail->next) {
-	//	//if(node->data.)
-	//}
+	Node* node = new Node();
+	node = this->dsNV;
+
+	while (true) {
+		if (node->getData().getMaNV() == maNV) {
+			if (node == dsNV) {
+				//cout << "head\n";
+				Node* tempNode = new Node();
+				tempNode = this->dsNV;
+				this->dsNV = node->next;
+				//delete tempNode;
+			}
+			else if (node == this->tail) {
+				//cout << "tail\n";
+				Node* tempNode = node;
+				this->tail = node->pre;
+				//delete tempNode;
+			}
+			else {
+				//cout << "between\n";
+				Node* tempNode = node->pre;
+				tempNode->next = node->next;
+				delete node;
+			}
+		}
+		node = node->next;
+
+		if (node == this->tail->next) {
+			cout << "Khong Tim Thay Nhan Vien, Vui Long Kiem Tra Lai Ma Nhan Vien!!!\n";
+			break;
+		}
+	}
 }
 
 template <class Type, class Type2>
@@ -112,13 +140,15 @@ void QLNV<Type, Type2>::suaThongTinNV()
 template <class Type, class Type2>
 void QLNV<Type, Type2>::hienThiThongTinNV()
 {
-	cout << "Thong Tin Cua Tat Ca Nhan Vien\n";
+	cout << "_______________________________________________________\n";
+	cout << "	Thong Tin Cua Tat Ca Nhan Vien\n";
+	cout << "_______________________________________________________\n";
 
 	Node *node = this->dsNV;
 	while (node != this->tail->next) {
 		cout << node->data;
 		node = node->next;
-		cout << "------------------------";
+		cout << "------------------------\n";
 	}
 }
 
@@ -129,6 +159,11 @@ void QLNV<Type, Type2>::timKiemNV()
 
 template <class Type, class Type2>
 void QLNV<Type, Type2>::sapXepNV()
+{
+}
+
+template<class Type, class Type2>
+void QLNV<Type, Type2>::soLuongNhanVien()
 {
 }
 

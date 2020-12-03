@@ -50,7 +50,7 @@ Date::~Date()
 
 ostream & operator<<(ostream &o, Date &date)
 {
-	o << "date: " << date.ngay << "/" << "month: " << date.thang << "/" << "year: " << date.nam << "\n";
+	o << "date " << date.ngay << "/" << "month " << date.thang << "/" << "year " << date.nam << "\n";
 	return o;
 	// TODO: insert return statement here
 }

@@ -9,7 +9,12 @@ public:
 public:
 	void setData(NhanVien data);
 	NhanVien getData();
+	void setPre(Node* pre);
+	Node* getPre();
+	void setNext(Node* next);
+	Node* getNext();
 	Node(NhanVien data, Node* pre, Node* next);
+	Node();
 	~Node();
 };
 

@@ -17,6 +17,7 @@ public:
 	void hienThiThongTinNV();
 	void timKiemNV();
 	void sapXepNV();
+	void soLuongNhanVien();
 
 	QLNV(Type ds, Type2 type);
 	QLNV();
