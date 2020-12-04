@@ -29,7 +29,7 @@ int main()
 			qlnv.sapXepNV();
 		}
 		else if (choose == 5) {
-			//qlnv.soLuongNhanVien();
+			qlnv.soLuongNhanVien();
 		}
 		else if (choose == 6) {
 			qlnv.timKiemNV();

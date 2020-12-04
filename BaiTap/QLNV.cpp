@@ -105,22 +105,29 @@ void QLNV<Type, Type2>::xoaNV()
 		if (node->getData().getMaNV() == maNV) {
 			if (node == dsNV) {
 				//cout << "head\n";
-				Node* tempNode = new Node();
-				tempNode = this->dsNV;
 				this->dsNV = node->next;
-				//delete tempNode;
+				delete node;
+
+				this->slNV -= 1;
+				break;
 			}
 			else if (node == this->tail) {
 				//cout << "tail\n";
-				Node* tempNode = node;
 				this->tail = node->pre;
-				//delete tempNode;
+				this->tail->next = NULL;
+				delete node;
+
+				this->slNV -= 1;
+				break;
 			}
 			else {
 				//cout << "between\n";
 				Node* tempNode = node->pre;
 				tempNode->next = node->next;
 				delete node;
+
+				this->slNV -= 1;
+				break;
 			}
 		}
 		node = node->next;
@@ -145,16 +152,48 @@ void QLNV<Type, Type2>::hienThiThongTinNV()
 	cout << "_______________________________________________________\n";
 
 	Node *node = this->dsNV;
-	while (node != this->tail->next) {
-		cout << node->data;
-		node = node->next;
-		cout << "------------------------\n";
+	if (this->slNV > 0) {
+		while (node != this->tail->next) {
+			cout << node->data;
+			node = node->next;
+			cout << "------------------------\n";
+		}
+	}
+	else {
+		cout << "__ Danh Sach Trong __\n";
 	}
 }
 
 template <class Type, class Type2>
 void QLNV<Type, Type2>::timKiemNV()
 {
+	string maNV;
+	
+	Node *node = this->dsNV;
+
+	if (this->slNV > 0) {
+		cout << "Nhap ma nhan vien can tim: ";
+		cin >> maNV;
+
+		while (true) {
+			if (node->getData().getMaNV() == maNV) {
+				cout << "__ Thong Tin Nhan Vien Tim Duoc __\n";
+				cout << node->data;
+
+				break;
+			}
+
+			node = node->next;
+
+			if (node == this->tail->next) {
+				cout << "Khong Tim Thay Nhan Vien, Vui Long Kiem Tra Lai Ma Nhan Vien!!!\n";
+				break;
+			}
+		}
+	}
+	else {
+		cout << "__ Danh Sach Trong __\n";
+	}
 }
 
 template <class Type, class Type2>
@@ -165,6 +204,9 @@ void QLNV<Type, Type2>::sapXepNV()
 template<class Type, class Type2>
 void QLNV<Type, Type2>::soLuongNhanVien()
 {
+	cout << "_______________________________\n";
+	cout << "__ So Luong Nhan Vien: " << this->slNV << "__\n";
+	cout << "_______________________________\n";
 }
 
 template <class Type, class Type2>
