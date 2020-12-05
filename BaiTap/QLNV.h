@@ -7,7 +7,7 @@ template <class Type, class Type2>
 class QLNV
 {
 private:
-	Type* dsNV;					// tro den mang cac doi tuong nhan vien (su dung danh sach lien ket don de luu tru danh sach nhan vien)
+	Type* dsNV;		// head			// tro den mang cac doi tuong nhan vien (su dung danh sach lien ket don de luu tru danh sach nhan vien)
 	Type* tail;
 	Type2 slNV;
 public:

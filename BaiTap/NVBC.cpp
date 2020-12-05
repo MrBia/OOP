@@ -22,6 +22,12 @@ double NVBC::getTNLV()
 	return this->thamNienLamViec;
 }
 
+double NVBC::getLuongNV()
+{
+	double luong = (this->heSoLuong * 1390000) * (1 + this->thamNienLamViec);
+	return luong;
+}
+
 NVBC::NVBC()
 {
 }

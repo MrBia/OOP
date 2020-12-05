@@ -1,5 +1,7 @@
 #pragma once
 #include "NhanVien.h"
+#include <ctime>
+
 class NVHD :	public NhanVien
 {
 private:
@@ -7,6 +9,13 @@ private:
 public:
 	void setLuongTheoNgay(double luongTheoNgay);
 	double getLuongTheoNgay();
+	double getLuongNV();
+	bool kiemTraNamNhuan(int year);
+	int getNumberDayInYear(int year);
+	int TongSoNgay(int year);
+	int TongSoNgayTinhTuDauNam(int year, int month);
+	int SoNgayTrongThang(int thang, int nam);
+	int TongSoNgayTinhDenHienTai(int day, int month, int year);
 	friend ostream& operator<<(ostream&, NVHD&);
 	friend istream& operator >> (istream&, NVHD&);
 	NVHD();

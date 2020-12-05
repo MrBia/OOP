@@ -10,8 +10,8 @@ void QLNV<Type, Type2>::themNV()
 
 	
 	if (type == 1) {
-		NVHD data;
-		string maNV;
+		NVHD data; data.getLuongNV();
+		/*string maNV;
 		string tenNV;
 		Date ngayBatDau;
 		bool gioiTinh;
@@ -45,7 +45,7 @@ void QLNV<Type, Type2>::themNV()
 			temp->next = this->dsNV;
 			this->dsNV->pre = temp;
 			this->dsNV = temp;
-		}
+		}*/
 	}
 	else {
 		NVBC data;
@@ -142,6 +142,13 @@ void QLNV<Type, Type2>::xoaNV()
 template <class Type, class Type2>
 void QLNV<Type, Type2>::suaThongTinNV()
 {
+	Node *node = this->dsNV;
+		while (node != this->tail->next) {
+			cout << node->data.getLuongNV();
+			
+			cout << "------------------------\n";
+			node = node->next;
+	}
 }
 
 template <class Type, class Type2>
@@ -199,6 +206,26 @@ void QLNV<Type, Type2>::timKiemNV()
 template <class Type, class Type2>
 void QLNV<Type, Type2>::sapXepNV()
 {
+	// SORT ACCORDING TO SALARY | MIN -> MAX
+	Node* tempNode = this->dsNV;
+	Node* tempNodeNext = tempNode->next;
+	Node* temp;
+	
+	while (tempNodeNext->next != this->tail) {
+		if (tempNode->getData().getLuongNV() > tempNodeNext->getData().getLuongNV()) {
+			temp = tempNode;
+			tempNode = tempNodeNext;
+
+			temp->next = tempNodeNext->next;
+			tempNodeNext = temp;
+
+			tempNode->next = tempNodeNext;
+		}
+		tempNode = tempNode->next;
+		tempNodeNext = tempNode->next;
+	}
+
+	cout << "__ Danh sach da duoc sap xep tang dan theo muc luong ___\n";
 }
 
 template<class Type, class Type2>

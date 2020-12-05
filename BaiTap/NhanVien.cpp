@@ -41,14 +41,15 @@ bool NhanVien::getGioiTinhNV()
 	return this->gioiTinh;
 }
 
-void NhanVien::setLuongNV(double luongNV)
-{
-	this->luong = luongNV;
-}
+//void NhanVien::setLuongNV(double luongNV)
+//{
+//	this->luong = luongNV;
+//}
 
 double NhanVien::getLuongNV()
 {
-	return this->luong;
+	cout << "haha";
+	return 1.0;
 }
 
 void NhanVien::setNgayBatDau(Date ngayBatDau)

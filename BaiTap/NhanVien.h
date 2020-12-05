@@ -19,7 +19,7 @@ public:
 	string getTenNV();
 	void setGoiTinhNV(bool gioiTinhNV);
 	bool getGioiTinhNV();
-	void setLuongNV(double luongNV);
+	//void setLuongNV(double luongNV);
 	double getLuongNV();
 	void setNgayBatDau(Date ngayBatDau);
 	Date getNgayBatDau();

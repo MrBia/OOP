@@ -12,6 +12,7 @@ public:
 	double getHSL();
 	void setTNLV(double tnlv);
 	double getTNLV();
+	double getLuongNV();
 	friend ostream& operator<<(ostream&, NVBC&);
 	friend istream& operator >> (istream&, NVBC&);
 	NVBC();

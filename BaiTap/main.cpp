@@ -52,7 +52,7 @@ void showMenu() {
 	cout << "1. Them Nhan Vien\n";
 	cout << "2. Hien Thi Danh Sach\n";
 	cout << "3. Xoa Nhan Vien\n";
-	cout << "4. Sap Xep Nhan Vien\n";
+	cout << "4. Sap Xep Nhan Vien\n";	// error
 	cout << "5. So Luong Nhan Vien Hien Tai\n";
 	cout << "6. Tim Kiem Nhan Vien\n";
 	cout << "7. Sua Thong Tin Nhan Vien\n";
