@@ -10,8 +10,8 @@ void QLNV<Type, Type2>::themNV()
 
 	
 	if (type == 1) {
-		NVHD data; data.getLuongNV();
-		/*string maNV;
+		NVHD data;
+		string maNV;
 		string tenNV;
 		Date ngayBatDau;
 		bool gioiTinh;
@@ -45,7 +45,7 @@ void QLNV<Type, Type2>::themNV()
 			temp->next = this->dsNV;
 			this->dsNV->pre = temp;
 			this->dsNV = temp;
-		}*/
+		}
 	}
 	else {
 		NVBC data;
@@ -142,13 +142,18 @@ void QLNV<Type, Type2>::xoaNV()
 template <class Type, class Type2>
 void QLNV<Type, Type2>::suaThongTinNV()
 {
-	Node *node = this->dsNV;
-		while (node != this->tail->next) {
-			cout << node->data.getLuongNV();
+	NVHD data;
+	Node *node = new Node(data, NULL, NULL);
+	this->dsNV = node;
+
+	//this->dsNV->getData().getLuongNV();
+	data.getLuongNV();
+	 
+	/*while (node != this->tail->next) {
+		cout << node->getData().getLuongNV();
 			
-			cout << "------------------------\n";
-			node = node->next;
-	}
+		node = node->next;
+	}*/
 }
 
 template <class Type, class Type2>

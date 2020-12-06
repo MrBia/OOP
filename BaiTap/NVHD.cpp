@@ -14,39 +14,53 @@ double NVHD::getLuongTheoNgay()
 
 double NVHD::getLuongNV()
 {
-	//time_t now = time(0);				// return day and time now
-	//tm* ltm = localtime(&now);
+	time_t now = time(0);				// return day and time now
 
-	//int year = 1900 + ltm->tm_year;
-	//int month = 1 + ltm->tm_mon;
-	//int day = ltm->tm_mday;
+	tm* ltm = localtime(&now);
 
-	//int soNgayDiLam=9;
-	////if(month == 1)
+	int year = 1900 + ltm->tm_year;
+	int month = 1 + ltm->tm_mon;
+	int day = ltm->tm_mday;
+	day = 11;
+	month = 10;
+
+
+	int countSaturdayAndSundayInMonth = 0;
+
+	// TONG SO NGAY TU 1.1.0001 DEN HIEN TAI (1.1.0001 LA THU 2)
+	int tong = TongSoNgayTinhDenHienTai(day, month, year);
+	
+	// BEFORE
+	int dayBefore = day - 1;
+	for (int i = 0; i < dayBefore; i++) {
+		if (this->checkDay(tong - (i + 1))) {
+			countSaturdayAndSundayInMonth++;
+		}
+	}
+
+	// NOW
+	if (this->checkDay(tong)) {
+		countSaturdayAndSundayInMonth++;
+	}
+
+	// AFTER
+	int ngayTrongThang = this->SoNgayTrongThang(month, year);
+	int dayAfter = ngayTrongThang - day;
+
+	for (int i = 0; i < dayAfter; i++) {
+		if (this->checkDay(tong + (i + 1))) {
+			countSaturdayAndSundayInMonth++;
+		}
+	}
+
+	//cout << "number: " << countSaturdayAndSundayInMonth;
+
+	// TONG SO NGAY DI LAM TRONG THANG
+	int soNgayDiLam = ngayTrongThang - countSaturdayAndSundayInMonth;
+	cout << soNgayDiLam;
+	// LUONG THEO THANG
 	//double luongNVHD = this->luongCongNhatTheoNgay * soNgayDiLam;
 
-	int tong = TongSoNgayTinhDenHienTai(1, 6, 1998);
-	if (tong % 7 == 1) {
-		cout << "THU 2\n";
-	}
-	else if (tong % 7 == 2) {
-		cout << "THU 3\n";
-	}
-	else if (tong % 7 == 3) {
-		cout << "THU 4\n";
-	}
-	else if (tong % 7 == 4) {
-		cout << "THU 5\n";
-	}
-	else if (tong % 7 == 5) {
-		cout << "THU 6\n";
-	}
-	else if (tong % 7 == 6) {
-		cout << "THU 7\n";
-	}
-	else if (tong % 7 == 0) {
-		cout << "CHU NHAT\n";
-	}
 	return 0.0;
 }
 
@@ -105,6 +119,36 @@ int NVHD::SoNgayTrongThang(int thang, int nam)
 int NVHD::TongSoNgayTinhDenHienTai(int day, int month, int year)
 {
 	return TongSoNgay(year) + TongSoNgayTinhTuDauNam(year, month) + day;
+}
+
+bool NVHD::checkDay(int day)
+{
+	// KIEM TRA XEM HIEN TAI HOM NAY LA THU MAY
+	if (day % 7 == 1) {
+		//cout << "THU 2\n";
+	}
+	else if (day % 7 == 2) {
+		//cout << "THU 3\n";
+	}
+	else if (day % 7 == 3) {
+		//cout << "THU 4\n";
+	}
+	else if (day % 7 == 4) {
+		//cout << "THU 5\n";
+	}
+	else if (day % 7 == 5) {
+		//cout << "THU 6\n";
+	}
+	else if (day % 7 == 6) {
+		//cout << "THU 7\n";
+		return true;
+	}
+	else if (day % 7 == 0) {
+		//cout << "CHU NHAT\n";
+		return true;
+	}
+
+	return false;
 }
 
 

@@ -1,4 +1,5 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 #include "NhanVien.h"
 #include <ctime>
 
@@ -16,6 +17,7 @@ public:
 	int TongSoNgayTinhTuDauNam(int year, int month);
 	int SoNgayTrongThang(int thang, int nam);
 	int TongSoNgayTinhDenHienTai(int day, int month, int year);
+	bool checkDay(int day);
 	friend ostream& operator<<(ostream&, NVHD&);
 	friend istream& operator >> (istream&, NVHD&);
 	NVHD();
